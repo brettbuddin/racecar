@@ -10,9 +10,21 @@ We all dread it. The client always wants to implement more than one vendor's tra
 TODO: Decide on what is absolutely required. Keep it simple.
 
 ## Installation
-
+    
 TODO: Add this.
 
 ## Configuration
 
-TODO: Add this.
+    Racecar.set('help', function() {
+      Racecar.Google.track('helpTag');
+      Racecar.Dart.track('floodlight', 'helpTag');
+    });
+
+    Racecar.set('about', function() {
+      Racecar.Google.track('aboutTag');
+      Racecar.Dart.track('floodlight', 'aboutTag');
+    });
+    
+    $('#aboutButton').clickAndTrack(function() {
+      alert('We just called the about event'); 
+    }, 'about');
