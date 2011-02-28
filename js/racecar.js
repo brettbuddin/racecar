@@ -1,16 +1,12 @@
 (function(context) {
   var Racecar = {};
-  var Tags = {};
   
-
-  Racecar.set = function(key, value) {
-    Tags[key] = value;
-  };
-  Racecar.get = function(key) {
-    Tags[key];
-  };
-  Racecar.track = function(key) {
-    Tags[key]();
+  Racecar.tags = {};
+  Racecar.bind = function(key, fn) {
+    this.tags[key] = fn; 
+    $('[data-track]="' + key + '"').click(function() {
+      fn.call(this);
+    });
   };
 
   var Google = {

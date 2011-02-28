@@ -14,17 +14,18 @@ TODO: Decide on what is absolutely required. Keep it simple.
 TODO: Add this.
 
 ## Configuration
-
-    Racecar.set('help', function() {
-      Racecar.Google.track('helpTag');
-      Racecar.Dart.track('floodlight', 'helpTag');
-    });
-
-    Racecar.set('about', function() {
-      Racecar.Google.track('aboutTag');
-      Racecar.Dart.track('floodlight', 'aboutTag');
-    });
     
-    $('#aboutButton').clickAndTrack(function() {
-      alert('We just called the about event'); 
-    }, 'about');
+    <a href="" data-track="about" data-id="123">Track Me</a>
+    <a href="" data-track="contact" data-who="brett">Booddin</a>
+
+    Racecar.bind('about', function() {
+      var extra = $(this).attr('data-id');
+      Racecar.Google.track('aboutTag', extra);
+      Racecar.Dart.track('floodlight', 'aboutLink');
+    });
+
+    Racecar.bind('contact', function() {
+      var who = $(this).attr('data-who');
+      Racecar.Google.track('contactTag', who);
+      Racecar.Dart.track('floodlight', 'contactLink');
+    });
