@@ -14,8 +14,9 @@
       this.options = $.extend({}, opts);
     },
 
-    track: function(tag) {
-      _gaq.push([]); 
+    track: function() {
+      var args = Array().slice.call(arguments);
+      _gaq.push(args); 
     }
   };
 
