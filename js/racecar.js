@@ -70,16 +70,4 @@
   Racecar.Google = Google;
   Racecar.Dart = Dart;
   context.Racecar = Racecar;
-
-  // jQuery Plugin for quickly binding a track function to a link
-  // Examples:
-  //   $(SELECTOR).clickAndTrack(function() {}, Racecar.Google, '/event');
-  //   $(SELECTOR).clickAndTrack(function() {}, Racecar.Dart, 'tag');
-
-  $.fn.clickAndTrack = function(func, key) {
-    $(this).click(function() {
-      Racecar.track.apply(this, key);
-      return func.call(this);
-    });
-  };
 })(window);
